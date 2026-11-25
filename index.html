@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aceh Hype Trip — Jelajahi Alam, Budaya &amp; Wisata Ramah Muslim Aceh</title>
+    <meta
+      name="description"
+      content="Portal eksplorasi wisata ramah Muslim, kuliner lokal, akomodasi, dan perencana perjalanan interaktif untuk menjelajahi Aceh."
+    />
+    <meta property="og:title" content="Aceh Hype Trip" />
+    <meta
+      property="og:description"
+      content="Portal eksplorasi wisata ramah Muslim, kuliner lokal, akomodasi, dan perencana perjalanan interaktif untuk menjelajahi Aceh."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=JetBrains+Mono:wght@500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/styles/main.css" />
+  </head>
+  <body id="top">
+    <a class="skip-link" href="#main-content" data-i18n="skipToContent">Langsung ke konten utama</a>
+
+    <div id="gmpQuotaBanner" class="gmp-quota-banner" role="alert" hidden>
+      <div class="gmp-quota-inner">
+        <span>
+          Google Maps Platform quota reached. If you are the app owner, visit
+          <a
+            href="https://developers.google.com/maps/ai/ai-studio?utm_campaign=gmp_mcp_codeassist_v1_aistudio#quota_exceeded_errors"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            maps developer site
+          </a>
+          for instructions to update your account.
+        </span>
+        <button type="button" class="gmp-quota-close" id="gmpQuotaCloseBtn" aria-label="Tutup pemberitahuan kuota">
+          ×
+        </button>
+      </div>
+    </div>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <!-- Zone 1: Single-line Brand Wordmark -->
+        <a href="#top" class="brand-wordmark">ACEH HYPE TRIP</a>
+
+        <!-- Zone 2: 5 concise single-line navigation links -->
+        <nav class="nav-links" id="primaryNav" aria-label="Navigasi Utama">
+          <a href="#destinations" data-i18n="navDest">Destinasi</a>
+          <a href="#culinary" data-i18n="navFood">Kuliner</a>
+          <a href="#stay" data-i18n="navStay">Akomodasi</a>
+          <a href="#planner" data-i18n="navPlan">Perencana</a>
+          <a href="#admin" data-i18n="navAdmin">Kelola</a>
+        </nav>
+
+        <!-- Zone 3: 1 primary action + mobile menu button -->
+        <div class="header-actions">
+          <button type="button" class="btn btn-primary btn-sm" id="authHeaderBtn">
+            Masuk
+          </button>
+          <button
+            type="button"
+            class="mobile-menu-btn"
+            id="mobileMenuBtn"
+            aria-expanded="false"
+            aria-controls="mobileDrawer"
+            aria-label="Buka menu navigasi"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <line x1="3" y1="7" x2="21" y2="7" />
+              <line x1="3" y1="12" x2="21" y2="12" />
+              <line x1="3" y1="17" x2="21" y2="17" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="mobile-drawer" id="mobileDrawer" hidden>
+        <nav class="mobile-nav-list" aria-label="Navigasi Seluler">
+          <a href="#destinations" data-i18n="navDest">Destinasi</a>
+          <a href="#culinary" data-i18n="navFood">Kuliner</a>
+          <a href="#stay" data-i18n="navStay">Akomodasi</a>
+          <a href="#planner" data-i18n="navPlan">Perencana</a>
+          <a href="#admin" data-i18n="navAdmin">Kelola</a>
+          <button type="button" class="mobile-auth-link" id="mobileAuthBtn">Masuk Akun Demo</button>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section class="hero" aria-labelledby="heroTitle">
+        <div class="hero-media">
+          <img
+            src="/src/assets/images/hero_aceh_coast_1795588819972.jpg"
+            alt="Pemandangan pesisir Aceh saat senja dengan perahu tradisional dan tebing hijau tropis"
+            class="hero-bg"
+            referrerpolicy="no-referrer"
+          />
+          <div class="hero-scrim" aria-hidden="true"></div>
+        </div>
+
+        <div class="container hero-content">
+          <p class="eyebrow" data-i18n="heroEyebrow">Jelajah Pesisir hingga Dataran Tinggi Gayo</p>
+          <h1 id="heroTitle" data-i18n="heroTitle">Temukan Pesona dan Jiwa Tanah Aceh.</h1>
+          <p class="hero-lead" id="heroDesc" data-i18n="heroDesc">
+            Telusuri warisan sejarah, pesisir Sabang, dataran tinggi Gayo, kuliner autentik, dan penginapan ramah Muslim dalam satu perencana perjalanan terpadu.
+          </p>
+          <div class="hero-actions">
+            <a href="#destinations" class="btn btn-primary" data-i18n="exploreCta">Jelajahi Destinasi</a>
+            <a href="#planner" class="btn btn-ghost-light" data-i18n="planCta">Rencanakan Perjalanan</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="destinations" aria-labelledby="destHeading">
+        <div class="container">
+          <div class="section-header">
+            <div>
+              <p class="kicker" data-i18n="destKicker">Direktori Destinasi</p>
+              <h2 id="destHeading" data-i18n="destTitle">Jelajahi Aceh</h2>
+              <p class="section-sub" data-i18n="destSub">
+                Saring destinasi berdasarkan wilayah, kategori wisata, anggaran masuk, atau daftar favorit Anda.
+              </p>
+            </div>
+            <p class="results-summary tabular-nums" id="destCount" aria-live="polite"></p>
+          </div>
+
+          <div class="toolbar" role="search" aria-label="Filter destinasi">
+            <div class="search-field">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg>
+              <input
+                id="search"
+                type="search"
+                placeholder="Cari destinasi atau wilayah..."
+                aria-label="Cari destinasi"
+              />
+            </div>
+
+            <select id="region" aria-label="Filter wilayah">
+              <option value="">Semua wilayah</option>
+            </select>
+
+            <select id="category" aria-label="Filter kategori">
+              <option value="">Semua kategori</option>
+            </select>
+
+            <select id="sort" aria-label="Urutkan destinasi">
+              <option value="name">Nama A–Z</option>
+              <option value="cost">Biaya terendah</option>
+              <option value="costDesc">Biaya tertinggi</option>
+            </select>
+
+            <button type="button" class="btn btn-secondary" id="favOnly" aria-pressed="false">
+              <span data-i18n="favFilter">Favorit Saya</span>
+              <span class="tabular-nums" id="favCountBadge">(0)</span>
+            </button>
+          </div>
+
+          <div class="card-grid" id="destinationGrid"></div>
+        </div>
+      </section>
+
+      <section class="section section-tinted" id="mapSection" aria-labelledby="mapHeading">
+        <div class="container">
+          <div class="section-header">
+            <div>
+              <p class="kicker" data-i18n="mapKicker">Peta Realistis Interaktif</p>
+              <h2 id="mapHeading" data-i18n="mapTitle">Peta Eksplorasi Aceh</h2>
+              <p class="section-sub" data-i18n="mapSub">
+                Jelajahi citra satelit, kontur pegunungan Gayo, dan garis pantai Sabang secara langsung. Klik penanda lokasi atau pilih wilayah untuk meninjau destinasi.
+              </p>
+            </div>
+          </div>
+
+          <div class="map-layout">
+            <div class="map-canvas">
+              <div class="map-toolbar">
+                <div class="map-region-pills" id="mapRegionPills" role="group" aria-label="Pilih wilayah peta"></div>
+                <div class="map-type-group" id="mapTypeControls" role="group" aria-label="Mode tampilan peta">
+                  <button type="button" class="map-ctrl-btn is-active" data-map-type="hybrid" data-i18n="mapTypeHybrid">
+                    Satelit + Label
+                  </button>
+                  <button type="button" class="map-ctrl-btn" data-map-type="terrain" data-i18n="mapTypeTerrain">
+                    Kontur Alam
+                  </button>
+                  <button type="button" class="map-ctrl-btn" data-map-type="roadmap" data-i18n="mapTypeRoadmap">
+                    Peta Jalan
+                  </button>
+                  <button type="button" class="map-ctrl-btn" data-map-type="satellite" data-i18n="mapTypeSatellite">
+                    Satelit Murni
+                  </button>
+                  <button type="button" class="map-ctrl-btn map-reset-btn" id="mapResetViewBtn" data-i18n="mapResetView">
+                    Seluruh Aceh
+                  </button>
+                </div>
+              </div>
+
+              <div class="google-map-shell">
+                <div
+                  id="googleMapCanvas"
+                  class="google-map-canvas"
+                  role="region"
+                  aria-label="Peta interaktif Google Maps Aceh"
+                ></div>
+                <div id="mapFallbackOverlay" class="map-fallback-overlay" hidden>
+                  <p id="mapFallbackMessage"></p>
+                </div>
+              </div>
+
+              <p class="map-disclaimer" data-i18n="mapDisclaimer">
+                Didukung Google Maps Platform. Gunakan Ctrl/Cmd + scroll atau dua jari untuk memperbesar peta; klik pin lokasi untuk detail destinasi.
+              </p>
+            </div>
+
+            <aside class="surface-card region-inspector" id="regionInspector" aria-live="polite"></aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="culinary" aria-labelledby="foodHeading">
+        <div class="container">
+          <div class="section-header">
+            <div>
+              <p class="kicker" data-i18n="foodKicker">Cita Rasa Lokal</p>
+              <h2 id="foodHeading" data-i18n="foodTitle">Kuliner &amp; UMKM Lokal</h2>
+              <p class="section-sub" data-i18n="foodSub">
+                Sajian khas dan produk UMKM Aceh beserta status sertifikasi halal dan sumber verifikasinya secara terpisah.
+              </p>
+            </div>
+          </div>
+          <div class="card-grid" id="foodGrid"></div>
+        </div>
+      </section>
+
+      <section class="section section-tinted" id="stay" aria-labelledby="stayHeading">
+        <div class="container">
+          <div class="section-header">
+            <div>
+              <p class="kicker" data-i18n="stayKicker">Istirahat Nyaman</p>
+              <h2 id="stayHeading" data-i18n="stayTitle">Akomodasi Ramah Muslim</h2>
+              <p class="section-sub" data-i18n="staySub">
+                Daftar penginapan contoh dengan informasi fasilitas pendukung ibadah. Informasi fasilitas bukan bukti sertifikasi halal resmi.
+              </p>
+            </div>
+          </div>
+          <div class="card-grid" id="stayGrid"></div>
+        </div>
+      </section>
+
+      <section class="section" id="planner" aria-labelledby="planHeading">
+        <div class="container">
+          <div class="section-header">
+            <div>
+              <p class="kicker" data-i18n="planKicker">Susun Rencana Anda</p>
+              <h2 id="planHeading" data-i18n="planTitle">Perencana Perjalanan &amp; Anggaran</h2>
+              <p class="section-sub" data-i18n="planSub">
+                Rancang jadwal kunjungan harian, hitung simulasi anggaran secara terukur, atau pilih paket wisata yang sesuai.
+              </p>
+            </div>
+          </div>
+
+          <div class="planner-grid">
+            <div class="surface-card panel-block">
+              <div class="panel-head">
+                <h3 data-i18n="itineraryHeading">Perencana Itinerary</h3>
+                <span class="tabular-nums panel-metric" id="itineraryTicketTotal"></span>
+              </div>
+
+              <div class="form-grid">
+                <label>
+                  <span data-i18n="tripNameLabel">Nama perjalanan</span>
+                  <input id="tripName" type="text" value="Aceh Holiday" />
+                </label>
+                <label>
+                  <span data-i18n="tripDateLabel">Tanggal mulai</span>
+                  <input id="tripDate" type="date" />
+                </label>
+                <label>
+                  <span data-i18n="tripDaysLabel">Durasi (1–5 hari)</span>
+                  <select id="days">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3" selected>3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                  </select>
+                </label>
+                <label>
+                  <span data-i18n="tripPeopleLabel">Jumlah wisatawan</span>
+                  <input id="people" type="number" min="1" max="50" value="2" />
+                </label>
+              </div>
+
+              <div class="day-builder" id="dayLists"></div>
+
+              <div class="action-row">
+                <button type="button" class="btn btn-primary" id="saveTrip" data-i18n="saveTripBtn">Simpan Itinerary</button>
+                <button type="button" class="btn btn-secondary" id="loadTrip" data-i18n="loadTripBtn">Muat Tersimpan</button>
+                <button type="button" class="btn btn-secondary" id="copyTrip" data-i18n="copyTripBtn">Salin Ringkasan</button>
+              </div>
+              <p class="helper-text" id="tripStatus" aria-live="polite"></p>
+            </div>
+
+            <div class="surface-card panel-block">
+              <div class="panel-head">
+                <h3 data-i18n="budgetHeading">Kalkulator Anggaran</h3>
+                <button type="button" class="btn btn-inline" id="syncFromTrip" data-i18n="syncTripBtn">
+                  Sinkronkan dari Itinerary
+                </button>
+              </div>
+
+              <div class="form-grid">
+                <label>
+                  <span data-i18n="budgetPeopleLabel">Jumlah wisatawan</span>
+                  <input id="budgetPeople" type="number" min="1" value="2" />
+                </label>
+                <label>
+                  <span data-i18n="budgetDaysLabel">Jumlah hari</span>
+                  <input id="budgetDays" type="number" min="1" value="3" />
+                </label>
+                <label>
+                  <span data-i18n="transportLabel">Transportasi total (Rp)</span>
+                  <input id="transport" type="number" min="0" step="10000" value="300000" />
+                </label>
+                <label>
+                  <span data-i18n="hotelLabel">Akomodasi / malam (Rp)</span>
+                  <input id="hotel" type="number" min="0" step="10000" value="350000" />
+                </label>
+                <label>
+                  <span data-i18n="mealLabel">Makan / orang / hari (Rp)</span>
+                  <input id="meal" type="number" min="0" step="5000" value="100000" />
+                </label>
+                <label>
+                  <span data-i18n="activityLabel">Aktivitas / orang (Rp)</span>
+                  <input id="activity" type="number" min="0" step="5000" value="75000" />
+                </label>
+              </div>
+
+              <div class="action-row">
+                <button type="button" class="btn btn-primary" id="calculate" data-i18n="calcBtn">Hitung Anggaran</button>
+              </div>
+
+              <div class="budget-output" id="budgetResult" aria-live="polite"></div>
+              <p class="helper-text" data-i18n="budgetDisclaimer">
+                Seluruh angka merupakan simulasi perencanaan, bukan penawaran harga resmi.
+              </p>
+            </div>
+          </div>
+
+          <div class="surface-card panel-block package-block">
+            <div class="panel-head">
+              <div>
+                <h3 data-i18n="packageHeading">Rekomendasi Paket Wisata</h3>
+                <p class="helper-text" data-i18n="packageSub">
+                  Saring paket berdasarkan minat dan batas anggaran, lalu terapkan langsung ke perencana itinerary.
+                </p>
+              </div>
+            </div>
+
+            <div class="package-filters">
+              <label>
+                <span data-i18n="interestLabel">Minat wisata</span>
+                <select id="interest">
+                  <option value="all">Semua minat</option>
+                  <option value="alam">Alam</option>
+                  <option value="bahari">Bahari</option>
+                  <option value="religi">Religi</option>
+                  <option value="sejarah">Sejarah</option>
+                  <option value="budaya">Budaya</option>
+                </select>
+              </label>
+              <label>
+                <span data-i18n="maxBudgetLabel">Anggaran maksimal (Rp)</span>
+                <input id="maxBudget" type="number" min="0" step="50000" value="1500000" />
+              </label>
+              <div class="package-filter-action">
+                <button type="button" class="btn btn-accent" id="recommend" data-i18n="recommendBtn">
+                  Cari Rekomendasi
+                </button>
+              </div>
+            </div>
+
+            <div class="card-grid" id="recommendations"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-tinted" id="admin" aria-labelledby="adminHeading">
+        <div class="container">
+          <div class="section-header">
+            <div>
+              <p class="kicker" data-i18n="adminKicker">Manajemen Konten Lokal</p>
+              <h2 id="adminHeading" data-i18n="adminTitle">Dashboard Pengelola</h2>
+              <p class="section-sub" data-i18n="adminSub">
+                Kelola data destinasi, kuliner, akomodasi, dan paket secara lokal di browser dengan penyimpanan persisten.
+              </p>
+            </div>
+            <button type="button" class="btn btn-secondary" id="resetSeedData" data-i18n="resetSeedBtn">
+              Pulihkan Data Awal
+            </button>
+          </div>
+
+          <div class="surface-card panel-block">
+            <div id="adminAuthGate" hidden></div>
+            <div id="adminWorkspace">
+              <div class="segmented-tabs" id="adminTabs" role="tablist" aria-label="Kategori data pengelola">
+              <button type="button" role="tab" aria-selected="true" class="tab-btn is-active" data-type="destinations" data-i18n="tabDest">
+                Destinasi
+              </button>
+              <button type="button" role="tab" aria-selected="false" class="tab-btn" data-type="foods" data-i18n="tabFood">
+                Kuliner
+              </button>
+              <button type="button" role="tab" aria-selected="false" class="tab-btn" data-type="stays" data-i18n="tabStay">
+                Akomodasi
+              </button>
+              <button type="button" role="tab" aria-selected="false" class="tab-btn" data-type="packages" data-i18n="tabPack">
+                Paket Wisata
+              </button>
+            </div>
+
+            <div class="admin-layout">
+              <form id="adminForm" class="admin-form" novalidate>
+                <input id="editId" type="hidden" />
+                <h3 id="adminFormTitle" data-i18n="adminAddTitle">Tambah Data Baru</h3>
+                <div class="form-grid">
+                  <label>
+                    <span data-i18n="formNameLabel">Nama</span>
+                    <input id="adminName" type="text" required placeholder="Contoh: Masjid Baiturrahim" />
+                  </label>
+                  <label id="adminRegionWrap">
+                    <span id="adminRegionLabel" data-i18n="formRegionLabel">Wilayah</span>
+                    <input id="adminRegion" type="text" required placeholder="Contoh: Banda Aceh" />
+                  </label>
+                  <label>
+                    <span id="adminCategoryLabel" data-i18n="formCategoryLabel">Kategori</span>
+                    <input id="adminCategory" type="text" placeholder="Contoh: alam" />
+                  </label>
+                  <label>
+                    <span id="adminPriceLabel" data-i18n="formPriceLabel">Estimasi harga (Rp)</span>
+                    <input id="adminPrice" type="number" min="0" value="0" />
+                  </label>
+                  <label class="span-2">
+                    <span data-i18n="formDescLabel">Deskripsi</span>
+                    <textarea id="adminDesc" rows="2" placeholder="Deskripsi singkat lokasi atau layanan..."></textarea>
+                  </label>
+                  <label class="span-2">
+                    <span data-i18n="formImageLabel">URL Gambar (opsional)</span>
+                    <input id="adminImage" type="url" placeholder="https://... atau biarkan kosong untuk gambar default" />
+                  </label>
+                </div>
+                <p class="helper-text is-error" id="adminFormError" role="alert" hidden></p>
+                <div class="action-row">
+                  <button type="submit" class="btn btn-primary" id="adminSubmitBtn" data-i18n="saveDataBtn">Simpan Data</button>
+                  <button type="button" class="btn btn-secondary" id="resetForm" data-i18n="resetFormBtn">Reset Form</button>
+                </div>
+              </form>
+
+              <div class="admin-list-wrap">
+                <div class="admin-list-head">
+                  <h3 data-i18n="adminListHeading">Daftar Entri Aktif</h3>
+                  <span class="tabular-nums helper-text" id="adminCount"></span>
+                </div>
+                <div class="admin-list" id="adminList"></div>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div class="footer-brand">
+          <p class="footer-wordmark">ACEH HYPE TRIP</p>
+          <p class="footer-tagline" data-i18n="footerTagline">
+            Discover Aceh, travel with purpose.
+          </p>
+        </div>
+        <div class="footer-meta">
+          <p data-i18n="footerNotice">
+            Portal informasi wisata Aceh · Data dan estimasi harga bersifat simulasi.
+          </p>
+          <p data-i18n="footerVerify">
+            Harap verifikasi jadwal operasional, status sertifikasi, dan akses lokasi sebelum berkunjung.
+          </p>
+        </div>
+        <div class="footer-lang">
+          <label for="language" data-i18n="languageLabel">Bahasa</label>
+          <select id="language" class="lang-select" aria-label="Pilih Bahasa">
+            <option value="id">Indonesia (ID)</option>
+            <option value="en">English (EN)</option>
+          </select>
+        </div>
+      </div>
+    </footer>
+
+    <div class="modal-backdrop" id="modalBackdrop" hidden>
+      <div
+        class="modal-dialog"
+        id="modalDialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modalTitle"
+      >
+        <div class="modal-header">
+          <h3 id="modalTitle"></h3>
+          <button type="button" class="modal-close" id="modalCloseBtn" aria-label="Tutup dialog">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          </button>
+        </div>
+        <div class="modal-body" id="modalBody"></div>
+        <div class="modal-footer" id="modalFooter"></div>
+      </div>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

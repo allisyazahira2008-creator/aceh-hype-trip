@@ -1,0 +1,602 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aceh Hype Trip — Discover Aceh</title>
+<style>
+:root{
+  --maroon:#641d32;--maroon2:#8b344b;--turq:#1b8b83;
+  --turq-light:#e6f5f1;--gold:#d7ad60;--cream:#faf7f0;
+  --ink:#252323;--muted:#77716d;--white:#fff;
+  --shadow:0 12px 35px rgba(50,25,30,.09);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);
+font-family:Inter,Arial,sans-serif;line-height:1.6}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+a{color:inherit}
+header{position:sticky;top:0;z-index:10;background:#fff;
+border-bottom:1px solid #eee}
+.nav{max-width:1180px;margin:auto;padding:14px 22px;
+display:flex;align-items:center;justify-content:space-between;gap:18px}
+.logo{font-weight:900;color:var(--maroon);font-size:20px}
+.logo span{color:var(--turq)}
+.navlinks{display:flex;gap:19px;align-items:center;flex-wrap:wrap}
+.navlinks a{text-decoration:none;font-size:13px;font-weight:700}
+.navlinks a:hover{color:var(--turq)}
+.btn{border:0;border-radius:9px;padding:11px 16px;
+font-weight:750;background:var(--maroon);color:white}
+.btn:hover{filter:brightness(1.12)}
+.btn.alt{background:var(--turq)}
+.btn.gold{background:var(--gold);color:#33230f}
+.btn.light{background:#f2e9e7;color:var(--maroon)}
+.btn.small{padding:7px 10px;font-size:12px}
+select,input,textarea{border:1px solid #ddd;border-radius:9px;
+padding:11px;background:#fff;color:var(--ink);max-width:100%}
+.hero{background:linear-gradient(90deg,rgba(47,13,29,.9),rgba(47,13,29,.25)),
+url('https://images.unsplash.com/photo-1516690561799-46d8f74f9abf?w=1600')
+center/cover;color:white;min-height:490px;display:flex;align-items:center}
+.hero-inner{max-width:1180px;width:100%;margin:auto;padding:70px 24px}
+.eyebrow{color:var(--gold);text-transform:uppercase;
+letter-spacing:3px;font-size:12px;font-weight:800}
+.hero h1{font-family:Georgia,serif;font-size:clamp(42px,7vw,76px);
+line-height:1.05;max-width:700px;margin:14px 0}
+.hero p{max-width:560px;color:#f4e9e7}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:25px}
+.wrap{max-width:1180px;margin:auto;padding:58px 22px}
+.section-head{display:flex;justify-content:space-between;
+align-items:end;gap:15px;margin-bottom:24px}
+.section-head h2{font: bold 34px Georgia,serif;color:var(--maroon);margin:0}
+.section-head p{color:var(--muted);margin:5px 0}
+.kicker{color:var(--turq);font-size:11px;font-weight:900;
+letter-spacing:2px;text-transform:uppercase}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:white;border-radius:15px;overflow:hidden;
+box-shadow:var(--shadow);border:1px solid #eee}
+.card img{width:100%;height:185px;object-fit:cover;background:#e8dfd4}
+.card-body{padding:17px}
+.card h3{margin:6px 0;color:var(--maroon);font-size:19px}
+.card p{color:var(--muted);font-size:13px}
+.meta{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0}
+.tag{font-size:11px;padding:5px 9px;border-radius:20px;
+background:var(--turq-light);color:#176b65;font-weight:800}
+.price{font-weight:900;color:var(--maroon)}
+.card-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:13px}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}
+.toolbar input{flex:2;min-width:180px}
+.toolbar select{flex:1;min-width:145px}
+.panel{background:white;padding:23px;border-radius:15px;
+box-shadow:var(--shadow);margin-bottom:20px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.map{background:#f0e7d9;border-radius:15px;padding:18px}
+.map svg{width:100%;height:auto;max-height:340px}
+.map text{font-size:11px;fill:var(--maroon);font-weight:bold}
+.map circle{fill:var(--turq);stroke:white;stroke-width:3}
+.formgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.formgrid label{font-size:12px;font-weight:800;display:grid;gap:5px}
+.result{background:var(--turq-light);padding:15px;border-radius:10px;
+margin-top:12px}
+.list{padding-left:20px}
+footer{background:#321522;color:white;padding:35px 22px}
+footer .foot{max-width:1180px;margin:auto;display:flex;
+justify-content:space-between;gap:20px;flex-wrap:wrap}
+.hidden{display:none!important}
+.muted{color:var(--muted)}
+.smalltext{font-size:12px;color:var(--muted)}
+.badge{font-size:10px;font-weight:900;padding:4px 7px;
+border-radius:5px;background:#f6ead4;color:#79551d}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}
+.tabs button.active{background:var(--turq)}
+#toast{position:fixed;bottom:20px;right:20px;background:#30212a;
+color:white;padding:12px 18px;border-radius:10px;z-index:30;
+display:none;box-shadow:var(--shadow)}
+@media(max-width:850px){
+ .grid{grid-template-columns:repeat(2,1fr)}
+ .navlinks{gap:9px}.navlinks a{font-size:11px}
+}
+@media(max-width:600px){
+ .nav{align-items:flex-start;flex-direction:column}
+ .navlinks{width:100%;overflow:auto;flex-wrap:nowrap;padding-bottom:5px}
+ .hero{min-height:430px}.grid,.two{grid-template-columns:1fr}
+ .formgrid{grid-template-columns:1fr}
+ .wrap{padding:42px 16px}
+ .section-head{align-items:flex-start;flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<header>
+ <nav class="nav">
+  <div class="logo">ACEH <span>HYPE TRIP.</span></div>
+  <div class="navlinks">
+   <a href="#destinations" data-i="navDest">Destinations</a>
+   <a href="#culinary" data-i="navFood">Culinary</a>
+   <a href="#stay" data-i="navStay">Stay</a>
+   <a href="#planner" data-i="navPlan">Planner</a>
+   <a href="#admin">Dashboard</a>
+   <select id="language" aria-label="Language">
+    <option value="id">ID</option><option value="en">EN</option>
+   </select>
+  </div>
+ </nav>
+</header>
+
+<section class="hero">
+ <div class="hero-inner">
+  <div class="eyebrow">Explore • Experience • Enjoy</div>
+  <h1 id="heroTitle">Find Your Way to the Soul of Aceh.</h1>
+  <p id="heroDesc">Temukan keindahan alam, warisan budaya, kuliner lokal,
+  dan pengalaman wisata ramah Muslim di Tanah Rencong.</p>
+  <div class="hero-actions">
+   <a href="#destinations"><button class="btn gold" data-i="explore">Explore Destinations</button></a>
+   <a href="#planner"><button class="btn alt" data-i="plan">Plan Your Trip</button></a>
+  </div>
+ </div>
+</section>
+
+<section class="wrap" id="destinations">
+ <div class="section-head">
+  <div><div class="kicker">The destination edit</div>
+   <h2 data-i="destTitle">Discover Aceh</h2>
+   <p data-i="destSub">Jelajahi tempat terbaik dari pesisir hingga pegunungan.</p>
+  </div>
+  <span class="badge">12+ SAMPLE DESTINATIONS</span>
+ </div>
+ <div class="toolbar">
+  <input id="search" placeholder="Cari destinasi...">
+  <select id="region"><option value="">Semua wilayah</option></select>
+  <select id="category"><option value="">Semua kategori</option></select>
+  <select id="sort">
+   <option value="name">Nama A–Z</option>
+   <option value="cost">Biaya terendah</option>
+   <option value="costDesc">Biaya tertinggi</option>
+  </select>
+  <button class="btn light" id="favOnly">♡ Favorit</button>
+ </div>
+ <div class="grid" id="destinationGrid"></div>
+</section>
+
+<section class="wrap" id="mapSection">
+ <div class="section-head">
+  <div><div class="kicker">Explore the region</div>
+  <h2>Discover Aceh on Map</h2>
+  <p>Peta ilustratif, bukan peta navigasi atau batas administratif resmi.</p></div>
+ </div>
+ <div class="map">
+  <svg viewBox="0 0 700 340" role="img" aria-label="Peta ilustratif wilayah Aceh">
+   <path d="M110 40 L200 20 L275 55 L330 95 L430 110 L510 160 L565 220 L530 270 L440 300 L350 280 L270 250 L190 205 L130 140Z"
+   fill="#d8c8a9" stroke="#a68e68" stroke-width="3"/>
+   <path d="M100 260 Q160 220 220 260 T340 265 T460 280" fill="none" stroke="#1b8b83" stroke-width="7"/>
+   <circle cx="165" cy="112" r="8"/><text x="178" y="110">Banda Aceh</text>
+   <circle cx="70" cy="185" r="8"/><text x="82" y="182">Sabang</text>
+   <circle cx="240" cy="180" r="8"/><text x="252" y="178">Aceh Besar</text>
+   <circle cx="390" cy="140" r="8"/><text x="402" y="138">Aceh Tengah</text>
+   <circle cx="480" cy="95" r="8"/><text x="492" y="93">Bener Meriah</text>
+  </svg>
+ </div>
+</section>
+
+<section class="wrap" id="culinary">
+ <div class="section-head"><div><div class="kicker">Taste of Aceh</div>
+ <h2 data-i="foodTitle">Local Culinary & UMKM</h2>
+ <p>Kuliner dan produk lokal. Status sertifikasi ditampilkan terpisah.</p></div></div>
+ <div class="grid" id="foodGrid"></div>
+</section>
+
+<section class="wrap" id="stay">
+ <div class="section-head"><div><div class="kicker">Rest and recharge</div>
+ <h2 data-i="stayTitle">Muslim-Friendly Stays</h2>
+ <p>Informasi fasilitas ramah Muslim bukan bukti sertifikasi halal.</p></div></div>
+ <div class="grid" id="stayGrid"></div>
+</section>
+
+<section class="wrap" id="planner">
+ <div class="section-head"><div><div class="kicker">Your journey, your story</div>
+ <h2 data-i="planTitle">Plan Your Trip</h2>
+ <p>Susun perjalanan dan hitung perkiraan anggaran.</p></div></div>
+ <div class="two">
+  <div class="panel">
+   <h3>Itinerary Planner</h3>
+   <div class="formgrid">
+    <label>Nama perjalanan<input id="tripName" value="Aceh Holiday"></label>
+    <label>Tanggal mulai<input id="tripDate" type="date"></label>
+    <label>Durasi (1–5 hari)<select id="days">
+     <option>1</option><option>2</option><option selected>3</option>
+     <option>4</option><option>5</option></select></label>
+    <label>Jumlah wisatawan<input id="people" type="number" min="1" value="2"></label>
+   </div>
+   <div id="dayLists"></div>
+   <button class="btn alt" id="saveTrip">Simpan Itinerary</button>
+   <button class="btn light" id="loadTrip">Muat Itinerary</button>
+   <div id="tripStatus" class="smalltext"></div>
+  </div>
+  <div class="panel">
+   <h3>Travel Budget Calculator</h3>
+   <div class="formgrid">
+    <label>Jumlah wisatawan<input id="budgetPeople" type="number" min="1" value="2"></label>
+    <label>Jumlah hari<input id="budgetDays" type="number" min="1" value="3"></label>
+    <label>Transportasi total (Rp)<input id="transport" type="number" value="300000"></label>
+    <label>Akomodasi / malam (Rp)<input id="hotel" type="number" value="350000"></label>
+    <label>Makan / orang / hari (Rp)<input id="meal" type="number" value="100000"></label>
+    <label>Biaya aktivitas / orang (Rp)<input id="activity" type="number" value="75000"></label>
+   </div>
+   <button class="btn" id="calculate">Hitung Anggaran</button>
+   <div class="result" id="budgetResult">Isi data lalu tekan Hitung Anggaran.</div>
+   <p class="smalltext">Seluruh angka merupakan simulasi, bukan penawaran harga resmi.</p>
+  </div>
+ </div>
+ <div class="panel">
+  <h3>Find Your Travel Package</h3>
+  <div class="formgrid">
+   <label>Minat wisata<select id="interest">
+    <option value="all">Semua minat</option>
+    <option value="alam">Alam</option><option value="bahari">Bahari</option>
+    <option value="religi">Religi</option><option value="sejarah">Sejarah</option>
+    <option value="budaya">Budaya</option></select></label>
+   <label>Anggaran maksimal (Rp)<input id="maxBudget" type="number" value="1500000"></label>
+  </div>
+  <button class="btn alt" id="recommend">Cari Rekomendasi</button>
+  <div id="recommendations" class="grid" style="margin-top:18px"></div>
+ </div>
+</section>
+
+<section class="wrap" id="admin">
+ <div class="section-head"><div><div class="kicker">Management demo</div>
+ <h2>Dashboard Pengelola</h2>
+ <p>CRUD lokal untuk demonstrasi. Tidak memakai akun atau backend.</p></div></div>
+ <div class="panel">
+  <div class="tabs" id="adminTabs">
+   <button class="btn active" data-type="destinations">Destinasi</button>
+   <button class="btn light" data-type="foods">Kuliner</button>
+   <button class="btn light" data-type="stays">Akomodasi</button>
+   <button class="btn light" data-type="packages">Paket Wisata</button>
+  </div>
+  <form id="adminForm">
+   <input id="editId" type="hidden">
+   <div class="formgrid">
+    <label>Nama<input id="adminName" required></label>
+    <label>Wilayah<input id="adminRegion" required placeholder="Contoh: Banda Aceh"></label>
+    <label>Kategori<input id="adminCategory" placeholder="Contoh: alam"></label>
+    <label>Estimasi harga (Rp)<input id="adminPrice" type="number" min="0" value="0"></label>
+    <label>Deskripsi<textarea id="adminDesc" rows="2"></textarea></label>
+    <label>URL gambar<input id="adminImage" placeholder="URL gambar opsional"></label>
+   </div>
+   <p class="smalltext">Form demo memakai field umum. Status halal atau fasilitas tambahan dapat diperluas pada implementasi backend.</p>
+   <button class="btn alt" type="submit">Simpan Data</button>
+   <button class="btn light" type="button" id="resetForm">Reset</button>
+  </form>
+  <div id="adminList" style="margin-top:20px"></div>
+ </div>
+</section>
+
+<footer>
+ <div class="foot">
+  <div><strong>ACEH HYPE TRIP.</strong><br>
+  <span class="smalltext" style="color:#ddc9c7">Discover Aceh, travel with purpose.</span></div>
+  <div class="smalltext" style="color:#ddc9c7">
+   Prototype edukasi • Data dan harga simulasi<br>
+   Informasi destinasi perlu diverifikasi sebelum digunakan.
+  </div>
+ </div>
+</footer>
+<div id="toast" role="status"></div>
+
+<script>
+const $=id=>document.getElementById(id);
+const money=n=>"Rp "+Number(n||0).toLocaleString("id-ID");
+const img=(q)=>"https://images.unsplash.com/"+q+"?auto=format&fit=crop&w=900&q=80";
+
+const seedDestinations=[
+{id:"d1",nama:"Masjid Raya Baiturrahman",kategori:"religi",wilayah:"Banda Aceh",deskripsi:"Ikon religi Aceh dengan arsitektur megah dan nilai sejarah yang kuat.",imageUrl:img("photo-1564769625905-50e93615e769"),alamat:"Banda Aceh",estimasiBiaya:0,fasilitas:["Area parkir","Area publik"],fasilitasIbadah:"Tempat ibadah utama; periksa aturan kunjungan.",unggulan:true},
+{id:"d2",nama:"Museum Tsunami Aceh",kategori:"sejarah",wilayah:"Banda Aceh",deskripsi:"Museum edukasi untuk mengenang peristiwa tsunami dan ketangguhan masyarakat Aceh.",imageUrl:img("photo-1566127444979-b3d2b654e3d7"),alamat:"Banda Aceh",estimasiBiaya:20000,fasilitas:["Ruang pamer","Area edukasi"],fasilitasIbadah:"Fasilitas sekitar perlu dikonfirmasi.",unggulan:true},
+{id:"d3",nama:"Kapal PLTD Apung",kategori:"sejarah",wilayah:"Banda Aceh",deskripsi:"Situs memorial tsunami berupa kapal besar yang terdorong ke daratan.",imageUrl:img("photo-1500530855697-b586d89ba3ee"),alamat:"Banda Aceh",estimasiBiaya:10000,fasilitas:["Area memorial"],fasilitasIbadah:"Cari masjid terdekat sebelum berkunjung.",unggulan:true},
+{id:"d4",nama:"Pantai Iboih",kategori:"bahari",wilayah:"Sabang",deskripsi:"Kawasan pesisir dengan panorama laut dan akses menuju kegiatan wisata bahari.",imageUrl:img("photo-1500375592092-40eb2168fd21"),alamat:"Iboih, Sabang",estimasiBiaya:25000,fasilitas:["Warung","Akses pantai"],fasilitasIbadah:"Tanyakan lokasi musala kepada pengelola setempat.",unggulan:true},
+{id:"d5",nama:"Pantai Sumur Tiga",kategori:"bahari",wilayah:"Sabang",deskripsi:"Pantai dengan pemandangan laut dan suasana santai untuk menikmati pesisir.",imageUrl:img("photo-1507525428034-b723cf961d3e"),alamat:"Sabang",estimasiBiaya:0,fasilitas:["Area pantai"],fasilitasIbadah:"Fasilitas ibadah perlu dikonfirmasi.",unggulan:false},
+{id:"d6",nama:"Tugu Nol Kilometer",kategori:"alam",wilayah:"Sabang",deskripsi:"Titik penanda ujung barat Indonesia dengan panorama alam sekitarnya.",imageUrl:img("photo-1470770841072-f978cf4d019e"),alamat:"Iboih, Sabang",estimasiBiaya:10000,fasilitas:["Spot foto","Area pandang"],fasilitasIbadah:"Fasilitas ibadah sekitar perlu dikonfirmasi.",unggulan:true},
+{id:"d7",nama:"Pantai Lampuuk",kategori:"bahari",wilayah:"Aceh Besar",deskripsi:"Kawasan pantai populer dengan pasir dan pemandangan pesisir.",imageUrl:img("photo-1473116763249-2faaef81ccda"),alamat:"Aceh Besar",estimasiBiaya:10000,fasilitas:["Warung","Area pantai"],fasilitasIbadah:"Tanyakan ketersediaan musala kepada pengelola.",unggulan:true},
+{id:"d8",nama:"Air Terjun Suhom",kategori:"alam",wilayah:"Aceh Besar",deskripsi:"Wisata alam air terjun yang dikelilingi suasana hijau.",imageUrl:img("photo-1433086966358-54859d0ed716"),alamat:"Lhoong, Aceh Besar",estimasiBiaya:10000,fasilitas:["Area alam","Jalur jalan kaki"],fasilitasIbadah:"Fasilitas ibadah perlu dikonfirmasi.",unggulan:false},
+{id:"d9",nama:"Danau Laut Tawar",kategori:"alam",wilayah:"Aceh Tengah",deskripsi:"Danau di dataran tinggi Gayo dengan lanskap pegunungan.",imageUrl:img("photo-1470770841072-f978cf4d019e"),alamat:"Takengon, Aceh Tengah",estimasiBiaya:15000,fasilitas:["Area pemandangan","Wisata perahu tertentu"],fasilitasIbadah:"Konfirmasi fasilitas di lokasi.",unggulan:true},
+{id:"d10",nama:"Kampung Wisata Gayo",kategori:"budaya",wilayah:"Aceh Tengah",deskripsi:"Pengalaman mengenal budaya Gayo dan kehidupan masyarakat setempat.",imageUrl:img("photo-1516026672322-bc52d61a55d5"),alamat:"Aceh Tengah",estimasiBiaya:50000,fasilitas:["Pengalaman budaya"],fasilitasIbadah:"Atur waktu salat dan konfirmasi fasilitas setempat.",unggulan:false},
+{id:"d11",nama:"Air Terjun Reje Ilang",kategori:"alam",wilayah:"Bener Meriah",deskripsi:"Contoh tujuan wisata alam di kawasan dataran tinggi Bener Meriah.",imageUrl:img("photo-1433086966358-54859d0ed716"),alamat:"Bener Meriah",estimasiBiaya:15000,fasilitas:["Area alam"],fasilitasIbadah:"Informasi fasilitas perlu diverifikasi.",unggulan:false},
+{id:"d12",nama:"Kebun Kopi Gayo",kategori:"budaya",wilayah:"Bener Meriah",deskripsi:"Mengenal lanskap perkebunan dan tradisi kopi di dataran tinggi Gayo.",imageUrl:img("photo-1442512595331-e89e73853f31"),alamat:"Bener Meriah",estimasiBiaya:30000,fasilitas:["Edukasi kopi","Pemandangan kebun"],fasilitasIbadah:"Konfirmasi fasilitas kepada pengelola.",unggulan:true}
+];
+
+const seedFoods=[
+{id:"f1",nama:"Mie Aceh",kategori:"Kuliner lokal",wilayah:"Banda Aceh",harga:25000,imageUrl:img("photo-1569718212165-3a8278d5f624"),statusSertifikasiHalal:"Belum diverifikasi",sumberVerifikasi:"Belum tersedia",kontak:"628111000001"},
+{id:"f2",nama:"Kopi Gayo",kategori:"Produk UMKM",wilayah:"Aceh Tengah",harga:45000,imageUrl:img("photo-1442512595331-e89e73853f31"),statusSertifikasiHalal:"Belum diverifikasi",sumberVerifikasi:"Belum tersedia",kontak:"628111000002"},
+{id:"f3",nama:"Kuah Beulangong",kategori:"Kuliner lokal",wilayah:"Aceh Besar",harga:35000,imageUrl:img("photo-1547592180-85f173990554"),statusSertifikasiHalal:"Belum diverifikasi",sumberVerifikasi:"Belum tersedia",kontak:"628111000003"}
+];
+const seedStays=[
+{id:"s1",nama:"Penginapan Demo Banda Aceh",wilayah:"Banda Aceh",hargaPerMalam:350000,fasilitas:["Wi-Fi","Parkir"],fasilitasRamahMuslim:["Arah kiblat (perlu konfirmasi)","Dekat tempat ibadah"],imageUrl:img("photo-1566073771259-6a8506099945"),kontak:"628111000010"},
+{id:"s2",nama:"Guesthouse Demo Sabang",wilayah:"Sabang",hargaPerMalam:400000,fasilitas:["Wi-Fi","Area santai"],fasilitasRamahMuslim:["Informasi tempat ibadah sekitar"],imageUrl:img("photo-1571896349842-33c89424de2d"),kontak:"628111000011"},
+{id:"s3",nama:"Homestay Demo Takengon",wilayah:"Aceh Tengah",hargaPerMalam:300000,fasilitas:["Parkir","Pemandangan"],fasilitasRamahMuslim:["Konfirmasi fasilitas kepada pengelola"],imageUrl:img("photo-1445019980597-93fa8acb246c"),kontak:"628111000012"}
+];
+const seedPackages=[
+{id:"p1",nama:"Aceh Heritage Escape",durasi:2,daftarDestinasi:["d1","d2","d3"],estimasiBiaya:650000,deskripsi:"Menjelajahi sejarah dan warisan kota Banda Aceh.",kategori:"sejarah"},
+{id:"p2",nama:"Sabang Ocean Days",durasi:3,daftarDestinasi:["d4","d5","d6"],estimasiBiaya:1200000,deskripsi:"Menikmati pesisir dan panorama laut Sabang.",kategori:"bahari"},
+{id:"p3",nama:"Highland Gayo Journey",durasi:3,daftarDestinasi:["d9","d10","d12"],estimasiBiaya:950000,deskripsi:"Menikmati dan mengenal dataran tinggi Gayo.",kategori:"alam"}
+];
+
+function getData(key,seed){
+ try{const v=localStorage.getItem(key);return v?JSON.parse(v):structuredClone(seed)}
+ catch(e){return JSON.parse(JSON.stringify(seed))}
+}
+let destinations=getData("aht_destinations",seedDestinations);
+let foods=getData("aht_foods",seedFoods);
+let stays=getData("aht_stays",seedStays);
+let packages=getData("aht_packages",seedPackages);
+let favorites=getData("aht_favorites",[]);
+let adminType="destinations",onlyFav=false,language="id";
+const save=(key,value)=>localStorage.setItem(key,JSON.stringify(value));
+function toast(msg){$("toast").textContent=msg;$("toast").style.display="block";
+ setTimeout(()=>$("toast").style.display="none",2300)}
+function mapsUrl(d){return "https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(d.alamat+", Aceh, Indonesia")}
+function favorite(id){return favorites.includes(id)}
+function toggleFav(id){
+ favorites=favorite(id)?favorites.filter(x=>x!==id):[...favorites,id];
+ save("aht_favorites",favorites);renderDestinations();toast("Favorit diperbarui");
+}
+function cardDestination(d){
+ return `<article class="card">
+ <img src="${d.imageUrl||""}" alt="${d.nama}" onerror="this.src='https://placehold.co/600x400/e8dfd4/641d32?text=Aceh+Hype+Trip'">
+ <div class="card-body">
+ <span class="tag">${d.kategori}</span> <span class="tag">${d.wilayah}</span>
+ <h3>${d.nama}</h3><p>${d.deskripsi}</p>
+ <p><b>Fasilitas:</b> ${(d.fasilitas||[]).join(", ")}</p>
+ <p><b>Ibadah:</b> ${d.fasilitasIbadah||"Informasi belum tersedia."}</p>
+ <div class="price">${money(d.estimasiBiaya)} <span class="smalltext">/ estimasi</span></div>
+ <div class="card-actions">
+ <button class="btn small" onclick="toggleFav('${d.id}')">${favorite(d.id)?"♥ Favorit":"♡ Favorit"}</button>
+ <a href="${mapsUrl(d)}" target="_blank" rel="noopener"><button class="btn small alt">Google Maps</button></a>
+ </div><p class="smalltext">Informasi contoh; detail dan fasilitas perlu diverifikasi.</p>
+ </div></article>`;
+}
+function renderDestinations(){
+ const q=$("search").value.toLowerCase(),r=$("region").value,c=$("category").value;
+ let list=destinations.filter(d=>(d.nama+" "+d.deskripsi+" "+d.wilayah).toLowerCase().includes(q));
+ if(r)list=list.filter(d=>d.wilayah===r);
+ if(c)list=list.filter(d=>d.kategori===c);
+ if(onlyFav)list=list.filter(d=>favorite(d.id));
+ const sort=$("sort").value;
+ if(sort==="name")list.sort((a,b)=>a.nama.localeCompare(b.nama));
+ if(sort==="cost")list.sort((a,b)=>a.estimasiBiaya-b.estimasiBiaya);
+ if(sort==="costDesc")list.sort((a,b)=>b.estimasiBiaya-a.estimasiBiaya);
+ $("destinationGrid").innerHTML=list.length?list.map(cardDestination).join(""):"<p>Destinasi tidak ditemukan.</p>";
+}
+function fillFilters(){
+ const regions=[...new Set(destinations.map(d=>d.wilayah))];
+ const categories=[...new Set(destinations.map(d=>d.kategori))];
+ $("region").innerHTML='<option value="">Semua wilayah</option>'+regions.map(x=>`<option>${x}</option>`).join("");
+ $("category").innerHTML='<option value="">Semua kategori</option>'+categories.map(x=>`<option>${x}</option>`).join("");
+}
+function renderFoods(){
+ $("foodGrid").innerHTML=foods.map(f=>`<article class="card">
+ <img src="${f.imageUrl}" alt="${f.nama}" onerror="this.src='https://placehold.co/600x400?text=Kuliner+Aceh'">
+ <div class="card-body"><span class="tag">${f.kategori}</span><h3>${f.nama}</h3>
+ <p>${f.wilayah}</p><div class="price">${money(f.harga)} <span class="smalltext">/ simulasi</span></div>
+ <p><b>Status sertifikasi halal:</b> ${f.statusSertifikasiHalal}</p>
+ <p class="smalltext">Sumber verifikasi: ${f.sumberVerifikasi||"Belum tersedia"}.</p>
+ <button class="btn alt small" onclick="contactDemo('${f.nama}','${f.kontak}')">Kontak UMKM</button>
+ </div></article>`).join("");
+}
+function renderStays(){
+ $("stayGrid").innerHTML=stays.map(s=>`<article class="card">
+ <img src="${s.imageUrl}" alt="${s.nama}" onerror="this.src='https://placehold.co/600x400?text=Akomodasi+Aceh'">
+ <div class="card-body"><span class="tag">${s.wilayah}</span><h3>${s.nama}</h3>
+ <p>${(s.fasilitas||[]).join(", ")}</p><p><b>Fasilitas ramah Muslim:</b> ${(s.fasilitasRamahMuslim||[]).join(", ")}</p>
+ <div class="price">${money(s.hargaPerMalam)} <span class="smalltext">/ malam, simulasi</span></div>
+ <button class="btn alt small" onclick="contactDemo('${s.nama}','${s.kontak}')">Kontak penginapan</button>
+ </div></article>`).join("");
+}
+function contactDemo(name,number){
+ alert("Kontak DEMO untuk "+name+"\nNomor contoh: "+number+
+ "\nNomor ini bukan kontak resmi. Ganti dengan kontak yang telah diverifikasi.");
+}
+function renderDays(){
+ const n=Number($("days").value);
+ $("dayLists").innerHTML=Array.from({length:n},(_,i)=>`
+ <label style="display:block;margin-top:13px;font-weight:800">Hari ${i+1}
+ <select class="daySelect" data-day="${i}" multiple size="3" style="display:block;width:100%;margin-top:5px">
+ ${destinations.map(d=>`<option value="${d.id}">${d.nama} — ${d.wilayah}</option>`).join("")}
+ </select></label>`).join("");
+}
+function getTrip(){
+ const activities=[...document.querySelectorAll(".daySelect")].map(s=>
+ ({hari:Number(s.dataset.day)+1,destinasi:[...s.selectedOptions].map(o=>o.value)}));
+ return {id:"trip_"+Date.now(),namaPerjalanan:$("tripName").value,
+ tanggalMulai:$("tripDate").value,jumlahHari:Number($("days").value),
+ jumlahWisatawan:Number($("people").value),daftarAktivitas:activities,totalAnggaran:0};
+}
+$("days").addEventListener("change",renderDays);
+$("saveTrip").onclick=()=>{
+ const trip=getTrip();save("aht_itinerary",trip);
+ $("tripStatus").textContent="Itinerary berhasil disimpan di browser.";
+ toast("Itinerary tersimpan");
+};
+$("loadTrip").onclick=()=>{
+ const t=getData("aht_itinerary",null);
+ if(!t||!t.namaPerjalanan){toast("Belum ada itinerary tersimpan");return}
+ $("tripName").value=t.namaPerjalanan;$("tripDate").value=t.tanggalMulai;
+ $("days").value=t.jumlahHari;$("people").value=t.jumlahWisatawan;renderDays();
+ t.daftarAktivitas.forEach(a=>{
+  const sel=document.querySelector(`.daySelect[data-day="${a.hari-1}"]`);
+  if(sel)[...sel.options].forEach(o=>o.selected=a.destinasi.includes(o.value));
+ });
+ $("tripStatus").textContent="Itinerary dimuat.";
+};
+$("calculate").onclick=()=>{
+ const p=Math.max(1,Number($("budgetPeople").value)||1);
+ const d=Math.max(1,Number($("budgetDays").value)||1);
+ const transport=Math.max(0,Number($("transport").value)||0);
+ const hotel=Math.max(0,Number($("hotel").value)||0);
+ const meal=Math.max(0,Number($("meal").value)||0);
+ const activity=Math.max(0,Number($("activity").value)||0);
+ const lodging=hotel*Math.max(0,d-1);
+ const food=meal*p*d,activities=activity*p;
+ const total=transport+lodging+food+activities;
+ $("budgetResult").innerHTML=`<b>Total estimasi: ${money(total)}</b>
+ <ul class="list"><li>Transportasi: ${money(transport)}</li>
+ <li>Akomodasi: ${money(lodging)}</li><li>Makan: ${money(food)}</li>
+ <li>Aktivitas: ${money(activities)}</li></ul>
+ <b>Per orang: ${money(total/p)}</b>`;
+};
+function renderRecommendations(){
+ const interest=$("interest").value,budget=Number($("maxBudget").value)||0;
+ const found=packages.filter(p=>(interest==="all"||p.kategori===interest)&&p.estimasiBiaya<=budget);
+ $("recommendations").innerHTML=found.length?found.map(p=>`
+ <article class="card"><div class="card-body"><span class="tag">${p.durasi} hari</span>
+ <h3>${p.nama}</h3><p>${p.deskripsi}</p><b>${money(p.estimasiBiaya)}</b>
+ <p class="smalltext">Estimasi paket simulasi.</p>
+ <button class="btn small" onclick="usePackage('${p.id}')">Lihat destinasi</button></div></article>`).join("")
+ :"<p>Tidak ada paket yang sesuai. Coba naikkan anggaran atau ubah minat.</p>";
+}
+function usePackage(id){
+ const p=packages.find(x=>x.id===id);if(!p)return;
+ $("days").value=Math.min(5,Math.max(1,p.durasi));renderDays();
+ const ids=p.daftarDestinasi;
+ ids.forEach((id,i)=>{const s=document.querySelector(`.daySelect[data-day="${i%Number($("days").value)}"]`);
+ if(s){const o=[...s.options].find(x=>x.value===id);if(o)o.selected=true}});
+ $("tripName").value=p.nama;
+ $("planner").scrollIntoView({behavior:"smooth"});
+ toast("Destinasi paket dimasukkan ke itinerary");
+}
+$("recommend").onclick=renderRecommendations;
+
+const types={
+ destinations:{data:()=>destinations,key:"aht_destinations"},
+ foods:{data:()=>foods,key:"aht_foods"},
+ stays:{data:()=>stays,key:"aht_stays"},
+ packages:{data:()=>packages,key:"aht_packages"}
+};
+function currentList(){return types[adminType].data()}
+function renderAdmin(){
+ $("adminList").innerHTML=currentList().map(x=>`
+ <div style="display:flex;justify-content:space-between;gap:12px;align-items:center;border-bottom:1px solid #eee;padding:10px 0">
+ <div><b>${x.nama}</b><div class="smalltext">${x.wilayah||x.kategori||""}</div></div>
+ <div style="display:flex;gap:6px">
+ <button class="btn small alt" onclick="editRecord('${x.id}')">Edit</button>
+ <button class="btn small light" onclick="deleteRecord('${x.id}')">Hapus</button>
+ </div></div>`).join("")||"<p>Belum ada data.</p>";
+}
+function persistAdmin(){
+ destinations.forEach(d=>{if(!d.mapsUrl)d.mapsUrl=mapsUrl(d)});
+ save(types[adminType].key,currentList());
+ fillFilters();renderDestinations();renderFoods();renderStays();renderAdmin();
+}
+function resetAdminForm(){
+ $("adminForm").reset();$("editId").value="";
+}
+$("adminTabs").addEventListener("click",e=>{
+ const b=e.target.closest("button[data-type]");if(!b)return;
+ adminType=b.dataset.type;
+ document.querySelectorAll("#adminTabs button").forEach(x=>{
+ x.className=x===b?"btn active":"btn light"});
+ resetAdminForm();renderAdmin();
+});
+$("adminForm").onsubmit=e=>{
+ e.preventDefault();
+ const id=$("editId").value||"item_"+Date.now();
+ const name=$("adminName").value.trim();
+ const region=$("adminRegion").value.trim();
+ const category=$("adminCategory").value.trim();
+ const price=Number($("adminPrice").value)||0;
+ const desc=$("adminDesc").value.trim();
+ const image=$("adminImage").value.trim();
+ let list=currentList(),old=list.find(x=>x.id===id);
+ let obj;
+ if(adminType==="destinations"){
+  obj={...old,id,nama:name,wilayah:region,kategori:category||"alam",
+  estimasiBiaya:price,deskripsi:desc,imageUrl:image||"https://placehold.co/600x400?text=Aceh",
+  alamat:region+", Aceh",fasilitas:old?.fasilitas||[],
+  fasilitasIbadah:old?.fasilitasIbadah||"Belum diverifikasi"};
+ }else if(adminType==="foods"){
+  obj={...old,id,nama:name,wilayah:region,kategori:category||"Kuliner lokal",
+  harga:price,imageUrl:image||"https://placehold.co/600x400?text=Kuliner",
+  statusSertifikasiHalal:old?.statusSertifikasiHalal||"Belum diverifikasi",
+  sumberVerifikasi:old?.sumberVerifikasi||"Belum tersedia",kontak:old?.kontak||"DEMO"};
+ }else if(adminType==="stays"){
+  obj={...old,id,nama:name,wilayah:region,hargaPerMalam:price,
+  imageUrl:image||"https://placehold.co/600x400?text=Stay",
+  fasilitas:old?.fasilitas||[],fasilitasRamahMuslim:old?.fasilitasRamahMuslim||[],
+  kontak:old?.kontak||"DEMO"};
+ }else{
+  obj={...old,id,nama:name,durasi:Math.min(5,Math.max(1,Number(category)||1)),
+  estimasiBiaya:price,deskripsi:desc,kategori:old?.kategori||"alam",
+  daftarDestinasi:old?.daftarDestinasi||[]};
+ }
+ if(old)list=list.map(x=>x.id===id?obj:x);else list.push(obj);
+ if(adminType==="destinations")destinations=list;
+ if(adminType==="foods")foods=list;
+ if(adminType==="stays")stays=list;
+ if(adminType==="packages")packages=list;
+ persistAdmin();resetAdminForm();toast("Data berhasil disimpan");
+};
+window.editRecord=id=>{
+ const x=currentList().find(y=>y.id===id);if(!x)return;
+ $("editId").value=x.id;$("adminName").value=x.nama;
+ $("adminRegion").value=x.wilayah||"";
+ $("adminCategory").value=x.kategori||x.durasi||"";
+ $("adminPrice").value=x.estimasiBiaya??x.harga??x.hargaPerMalam??0;
+ $("adminDesc").value=x.deskripsi||"";
+ $("adminImage").value=x.imageUrl||"";
+ $("adminForm").scrollIntoView({behavior:"smooth"});
+};
+window.deleteRecord=id=>{
+ if(!confirm("Hapus data ini?"))return;
+ let list=currentList().filter(x=>x.id!==id);
+ if(adminType==="destinations")destinations=list;
+ if(adminType==="foods")foods=list;
+ if(adminType==="stays")stays=list;
+ if(adminType==="packages")packages=list;
+ persistAdmin();toast("Data dihapus");
+};
+$("resetForm").onclick=resetAdminForm;
+
+const translations={
+ id:{navDest:"Destinasi",navFood:"Kuliner",navStay:"Akomodasi",navPlan:"Perencana",
+ destTitle:"Jelajahi Aceh",destSub:"Jelajahi tempat terbaik dari pesisir hingga pegunungan.",
+ foodTitle:"Kuliner & UMKM Lokal",stayTitle:"Akomodasi Ramah Muslim",
+ planTitle:"Rencanakan Perjalanan",explore:"Jelajahi Destinasi",plan:"Rencanakan Perjalanan"},
+ en:{navDest:"Destinations",navFood:"Culinary",navStay:"Stays",navPlan:"Planner",
+ destTitle:"Discover Aceh",destSub:"Explore the best places from coastlines to highlands.",
+ foodTitle:"Local Culinary & MSMEs",stayTitle:"Muslim-Friendly Stays",
+ planTitle:"Plan Your Trip",explore:"Explore Destinations",plan:"Plan Your Trip"}
+};
+$("language").onchange=()=>{
+ language=$("language").value;
+ document.documentElement.lang=language;
+ const t=translations[language];
+ document.querySelectorAll("[data-i]").forEach(el=>{
+  const key=el.dataset.i;if(t[key])el.textContent=t[key];
+ });
+ $("heroTitle").textContent=language==="id"?
+ "Temukan Pesona dan Jiwa Tanah Aceh.":"Find Your Way to the Soul of Aceh.";
+ $("heroDesc").textContent=language==="id"?
+ "Temukan keindahan alam, warisan budaya, kuliner lokal, dan pengalaman wisata ramah Muslim di Tanah Rencong.":
+ "Discover natural beauty, cultural heritage, local cuisine and Muslim-friendly travel experiences in Aceh.";
+ save("aht_language",language);
+};
+$("search").oninput=renderDestinations;
+$("region").onchange=renderDestinations;
+$("category").onchange=renderDestinations;
+$("sort").onchange=renderDestinations;
+$("favOnly").onclick=()=>{
+ onlyFav=!onlyFav;$("favOnly").textContent=onlyFav?"♥ Tampilkan Semua":"♡ Favorit";
+ renderDestinations();
+};
+$("tripDate").value=new Date().toISOString().slice(0,10);
+function init(){
+ fillFilters();renderDestinations();renderFoods();renderStays();
+ renderDays();renderAdmin();renderRecommendations();
+ const lang=localStorage.getItem("aht_language");
+ if(lang){$("language").value=lang;$("language").dispatchEvent(new Event("change"))}
+}
+init();
+</script>
+</body>
+</html>
